@@ -16,7 +16,7 @@ public class KafkaSeekingDataProvider implements RecordsDataProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaSeekingDataProvider.class);
 
-    // TODO further caching could be implemented
+    // TODO further caching could be implemented for instance on data aggregation
     private final Map<String, KafkaConsumer<String, String>> cachedConsumers;
     // we could use sth like zk to find it
     private final String brokerAddress;

@@ -76,7 +76,7 @@ public class KafkaDataWriter {
                 LOG.info("Creating topic {} with {} partitions", topicName, numPartitions);
                 // Topic doesn't exist, create it
                 NewTopic newTopic = new NewTopic(topicName, numPartitions, (short) 1);
-                // this should be the default
+                // this should be the default but set it anyway
                 newTopic.configs(Collections.singletonMap("cleanup.policy", "delete"));
                 adminClient.createTopics(Collections.singletonList(newTopic)).all().get();
                 LOG.info("Topic creation succeeded.");

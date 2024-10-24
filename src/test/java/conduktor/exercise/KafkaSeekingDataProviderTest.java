@@ -42,6 +42,7 @@ public class KafkaSeekingDataProviderTest {
     @AfterEach
     public void deleteData() {
         backFill.deleteTopic(topic);
+        dataProvider.close();
     }
 
     @Test

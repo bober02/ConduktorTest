@@ -78,8 +78,8 @@ public class KafkaDataWriterIntegrationTest {
         kafkaConsumer.assign(partitions);
         partitions.forEach(p -> kafkaConsumer.seek(p, 0));
         ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.of(10, ChronoUnit.SECONDS));
-        assertThat(records.count()).isEqualTo(3);
-        Set<String> expectedIds = Set.of("testId1","testId2","testId3");
+        assertThat(records.count()).isEqualTo(5);
+        Set<String> expectedIds = Set.of("testId1","testId2","testId3", "testId4","testId5");
         records.records(topic).forEach(record -> {
             assertThat(expectedIds).contains(record.key());
         });
