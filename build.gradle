@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Kafka clients library (includes AdminClient, Producer, Consumer)
+    implementation 'org.apache.kafka:kafka-clients:3.7.0'\
+    // web server, lightweight and easy manipulation or rest endpoints
+    implementation 'io.javalin:javalin:5.5.0'
+
+    // Optional: If you're using JSON serialization/deserialization
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    // SLF4J for logging with SimpleLogger
+    implementation 'org.slf4j:slf4j-api:2.0.0'
+    implementation 'org.slf4j:slf4j-simple:2.0.0'
+
+
+    // JUnit 5 for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'  // Make sure this is included
+
+    // Mockito for mocking
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'
+
+    // AssertJ for assertions
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+
+
+    // Testcontainers for Kafka and general testcontainers
+    testImplementation 'org.testcontainers:kafka:1.19.0'
+    testImplementation 'org.testcontainers:testcontainers:1.19.0'
+
+}
+
+test {
+    useJUnitPlatform()
+
+    // Disable parallel execution
+    systemProperty "junit.jupiter.execution.parallel.enabled", "false"
+}
